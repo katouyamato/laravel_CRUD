@@ -90,7 +90,7 @@
                                         <x-input-error :messages="$errors->get('caution')" class="mt-2" />
                                         <div class="p-2 w-full">
                                             <div class="relative">
-                                                <input type="checkbox" id="caution"> 注意事項に同意する
+                                                <input type="checkbox" id="caution"> 注意事項に同意
                                             </div>
                                         </div>
 
