@@ -9,9 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    index<br>
-                    <a href="{{ route('contacts.create') }}" class="text-blue-500">新規登録</a><br>
-                    <form class="mb-8" method="GET" action={{ route('contacts.index') }}>
+                    <div class="mb-2 flex justify-center">
+                    <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"><a href="{{ route('contacts.create') }}">お問合せ 新規登録</a></button><br>
+                    </div>
+                    <form class="flex justify-center mb-8" method="GET" action={{ route('contacts.index') }}>
                         <input type="text" name="search" placeholder="検索">
                         <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索する</button>
                     </form>
@@ -20,21 +21,19 @@
                         <table class="table-auto w-full text-left whitespace-no-wrap">
                             <thead>
                             <tr>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">ID</th>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">No.</th>
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">氏名</th>
                                 <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">件名</th>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">送信日時</th>
-                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">詳細</th>
+                                <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">登録日時</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($contacts as $contact)
-                            <tr>
-                                <td class="border-t-2 border-gray-200 px-4 py-3">{{ $contact->id }}</td>
-                                <td class="border-t-2 border-gray-200 px-4 py-3">{{ $contact->name }}</td>
-                                <td class="border-t-2 border-gray-200 px-4 py-3">{{ $contact->title }}</td>
-                                <td class="border-t-2 border-gray-200 px-4 py-3">{{ $contact->created_at }}</td>
-                                <td class="border-t-2 border-gray-200 px-4 py-3"><a class="text-blue-500" href="{{ route('contacts.show',['id' => $contact -> id ]) }}">詳細を見る</a></td>
+                            <tr class="hover:bg-slate-300">
+                                <td class="border-t-2 border-gray-200 px-4 py-3"><a href="{{ route('contacts.show',['id' => $contact -> id ]) }}">{{ $contact->id }}</a></td>
+                                <td class="border-t-2 border-gray-200 px-4 py-3"><a href="{{ route('contacts.show',['id' => $contact -> id ]) }}">{{ $contact->name }}</a></td>
+                                <td class="border-t-2 border-gray-200 px-4 py-3"><a href="{{ route('contacts.show',['id' => $contact -> id ]) }}">{{ $contact->title }}</a></td>
+                                <td class="border-t-2 border-gray-200 px-4 py-3"><a href="{{ route('contacts.show',['id' => $contact -> id ]) }}">{{ $contact->created_at }}</a></td>
                             </tr>
                             @endforeach
                             </tbody>
