@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\MyprofileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +37,21 @@ Route::prefix('contacts') // URLの頭に'contacts''文をつける
         Route::post('/{id}/destroy','destroy')->name('destroy');
     });
 
+Route::prefix('profile') // URLの頭に'contacts''文をつける
+    ->middleware(['auth']) // まとめて認証を走らせる
+    ->controller(MyprofileController::class) // 共通して使用するコントローラーを使用
+    ->name('profile.') // ルート名に名前をつける
+    ->group(function(){ // グループ化
+        Route::get('/','index')->name('index');
+    });
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('profile.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';

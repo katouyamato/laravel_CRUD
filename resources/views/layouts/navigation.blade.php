@@ -12,11 +12,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('profile.index')" :active="request()->routeIs('contacts.index')">
+                        自己紹介
                     </x-nav-link>
                     <x-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
-                        問い合わせ一覧
+                        作成物_CRUD基本機能
                     </x-nav-link>
                 </div>
             </div>
